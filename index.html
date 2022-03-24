@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <title>미니게임</title>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./css/def.css">
+	<script src="./js/jquery.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'abster';
+            src: url(font/abster-webfont.woff) format('woff');
+        }
+        @font-face {
+            font-family: 'SBAggroB';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        header{
+                position: relative;
+                align-items: center;
+                background-color:rgb(255, 255, 255);
+                color: #333;
+                border-bottom: 2px solid #000;
+                box-shadow: rgb(56, 56, 56) 2px 3px 1px 0px;
+        }
+        #site_name{
+            padding: 50px;
+            font-family: abster;
+            font-size: xx-large;
+        }
+        header .box_style1 {height:65px}
+        nav ul {height:100%}
+        nav ul li {margin-left:10px; font-family: SBAggroB;}
+        #center_font{
+            font-size: 50px;
+            text-decoration: none;
+            color: white;
+            font-family: SBAggroB;
+            padding: 10% 0 10% 0;
+        }
+        .box_style1 {
+            max-width:1100px;
+            margin:0 auto;
+        }
+        .center{
+            text-align: center;
+            padding: 0 0 10%;
+        }
+        .game_list{
+            background-color: rgba(0,0,0,0.5); color: rgb(255, 255, 255);
+            border:2px solid rgb(255, 255, 255);
+            border-radius: 30px;
+            max-width: 670px;
+            height: 35vh;
+            margin: auto;
+        }
+        #game{
+            float: left;
+            text-align: center;
+            width: 125px;
+            height: 125px;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 100%;
+            background-color: white;
+            font-family: abster;
+            margin: 20px;
+        }
+        
+        span{
+            display: block;
+            color: #000;
+            text-align: center;
+            font-size: xx-large;
+            line-height: 125px;
+        }
+
+        #main_section {min-height:calc(100vh - 160px); background: url(ghost_back.png);}
+
+        footer{background-color:#333; color:#fff; font-style: normal;border-top: 1px solid #fff;}
+        footer .box_style1 {height:80px;}
+
+    </style>
+</head>
+<body>
+    <header>  
+        <div class="box_style1 dis_f al_c flex_jsb">
+            <h2 id = site_name>CloNe</h1>
+            <nav>
+                <ul class="dis_f al_c">
+                    <li>스타일1</li>
+                    <li>스타일2</li>
+                    <li>스타일3</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="main_section">
+        <div class="box_style1">
+            <div class = "center">
+                <p id = "center_font">MINI GAME</p>
+                <div class = game_list>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                    <div id = "game"><span>GAME</span></div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    <footer>
+        <div class="box_style1 dis_f al_c">
+            <p>
+                팀명<br/>
+                학번, 이름 | 학번, 이름 | 학번, 이름
+            </p>
+        </div>
+    </footer>
+</bdoy>
