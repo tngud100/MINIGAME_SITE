@@ -1,142 +1,90 @@
-// 타자가 쳤을 때 점수의 범위
-var soso_range = 73;
-var good_range = 78;
-var exelent_range = 86;
-var bad_range = 91;
-var strike_range = 96;
-
-// cnt, score
-var bad = 3; //목숨
-var good = 0;
-var exelent = 0;
-var score = 0;
-
-// 볼 위치
-var ball_pos = 27;
-var hitted_ball = -5;
-
-var state = 0; // 현재 상황 (0:start버튼, 1:공 던짐, 2: 타자가 침)
-
-var hit_value = false; // 공이 쳐졌는가?
-var hit_state = false; // 범위 체크
-
-var init_value = true;
-
-function hitting_ball_pos(ball_pos){
-    window.addEventListener("keydown", e => {
-        if(e.keyCode == 32) { // space바 누를 시         
-
-            $('#hitter').hide();
-            $('#hitter2').show();
-
-            console.log(hit_state);
-            console.log(ball_pos);
-
-            if(hit_state == true && hit_value == false){    
-                console.log('test');
-                if(hit_value){
-                    state = 2;
-                }
-                if(ball_pos > hitted_ball){
-                    $('#ball').animate({top : `${hitted_ball}%`});
-                    hit_value = false;
-                    state = 3;
-                }
-            }
-
-            hit_value = true;  
-        }
-    });
-}
-
-function ball_go(){
-    var interval = setInterval(() =>{
-        if(state == 1){     // 투수가 공을 던졌을때
-            if(ball_pos <= strike_range){
-                if( ball_pos >= soso_range && ball_pos < bad_range){ // 공 위치가 soso_range 와 bad_range 사이일 때
-                    hit_state = true;
-                    console.log('can hitting');
-                }else{
-                    hit_state = false;
-                }
-                $("#ball").css('top',`${ball_pos}%`);
-                ball_pos += 0.3
-            }else{
-                if(init_value == true){
-                    console.log('test');
-                    init();
-                    init_value = false;
-                }; 
-            }
-            //console.log("볼 위치:"+ ball_pos);
-        }
-
-        if( state == 2 ){ // 타자가 침
-            if(ball_pos >= bad) { // 타자가 칠 수 없음
-                score -= 500;
-                if( score < 0 ){
-                    score = 0;
-                }
-                bad -= 1;
-                state = 3;
-                console.log("bad");
-            }else if(ball_pos >= exelent_range && ball_pos < bad_range){
-                score += 500;
-                good += 1;
-            }else if(ball_pos >= good_range && ball_pos < exelent_range){
-                score += 1000;
-                exelent += 1;
-            }else if(ball_pos >= soso_range && ball_pos < good_range){
-                score += 500;
-                good += 1;
-            }
-        }
-
-        
-        //console.log(ball_pos);
-        //console.log(state);
-        // console.log("볼 위치:"+ ball_pos);
-        // console.log("good:"+good);
-        // console.log("exelent"+exelent);
-        // console.log("score"+score);
-    });
-}
-// 초기화
-function init(){
-    $('.layer1').hide();
-    $('.g1').show();
-    $('#pitcher2').hide();
-    $('#pitcher3').hide();
-    $('#hitter2').hide();
-    $('#hitter').show();
-    // 점수
-    state = 1;
-    gent = 0;
-    scorood = 0;
-    exele = 0;
-    // 볼 위치
-    ball_pos = 27;
-    hit_value = false; // 공이 쳐졌는가?
-    hit_state = false; // 범위 체크
-    init_value = true;
-}
+var pitchershot_val = true;
+var shot_state = true;
+var shot_speed = 1000;
+var life = 3;
 
 $(function(){
-    $('.layer1').show();
-    $('.g1').hide();
-    $('#start_btn').click(()=>{
-        if(state == 3){
-            init();
-            state = 1;
-            setTimeout(function(){
-                ball_go();
-            },1000);
-        }
-        init();
-        state = 1;
+    $('#start_btn').click(function(){
+        $('.layer1').hide();
+        $('.g1').show();
         setTimeout(function(){
-            ball_go();
-        },1000);
+            ballshot()
+        }, Math.floor(Math.random() * 1000) + 500);
+
+        if( life > 0 ){
+            $("html").keydown(function(e) {
+                if(e.keyCode == 32){
+                    pitchershot();
+                }
+            });
+        }
     });
-    hitting_ball_pos(ball_pos);
-});
+})
+
+function ballshot(){
+    $("#ball").animate({
+        top : '100%'
+    }, shot_speed)
+    if(life > 0){
+        setTimeout(function(){
+            if(shot_state == true){
+                reset();
+                life -= 1;
+                console.log(life);
+            }
+        }, shot_speed + 400)
+    }else{
+        $("#ball").stop(true, false);
+        $(".layer2").show();
+    }
+
+}
+
+function pitchershot(){
+    if(pitchershot_val == true){
+        var play_view = $("#game_play").css("height");
+        var play_view = play_view.replace('px','');
+
+        var shot_zone_min = Number(play_view) * 0.7;
+        var shot_zone_max = Number(play_view) * 0.9;
+
+        var ballpos=$("#ball").css("top");
+        var ballpos=ballpos.replace('px','');
+        if(shot_zone_min < ballpos && ballpos < shot_zone_max){
+            shot_state = false;
+            $("#ball").stop(true,false);
+            $("#ball").animate({
+                top : '-100%',
+                left : (Math.floor(Math.random() * 300) - 75) + '%'
+            }, shot_speed / 2)
+
+            if(life > 0){
+                setTimeout(function(){
+                    reset();
+                }, shot_speed / 2 + 500)
+            }
+
+            if(shot_speed > 150){
+                shot_speed = shot_speed - 50;
+            }
+        }
+        $("#hitter").hide();
+        $("#hitter2").show();
+
+        pitchershot_val = false;
+    }
+}
+
+function reset(){
+    $("#ball").css("top", "27%");
+    $("#ball").css("left", "50%");
+    pitchershot_val = true;
+    shot_state = true;
+
+    $("#hitter").show();
+    $("#hitter2").hide();
+
+    setTimeout(function(){
+        ballshot();
+    }, Math.floor(Math.random() * 1000) + 500);
+}

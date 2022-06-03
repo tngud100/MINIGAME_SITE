@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/site_css.css">
     <link rel="stylesheet" type="text/css" href="./css/p_2.css">
 	<script src="./js/jquery.min.js"></script>
+	<script src="./js/p_2.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
@@ -29,11 +30,6 @@
         </div> 
         <button class="pc_h md_pop_show">메뉴</button>
     </header>
-    <script>
-        $(function(){
-            $(".game_start").hide();
-        });
-    </script>
     <section id="main_section" class="dis_f al_c">
         <div class="box_style1 play_area_box" id="game_t1">
             <div class="play_area">
@@ -41,12 +37,15 @@
                     <button type="button" id="start_btn"><img src="img2\start_btn.png"></button>
                 </div>
                 <div class="game_page">
-                    <button type="button" id="rock"><img src="img2\rock.png"></button>
-                    <button type="button" id="scissors"><img src="img2\scissors.png"></button>
-                    <button type="button" id="paper"><img src="img2\paper.png"></button>
                     <div id="enemyrock"><img src="img2\enemy_rock.png"></div>
                     <div id="enemypaper"><img src="img2\enemy_paper.png"></div>
                     <div id="enemyscissors"><img src="img2\enemy_scissors.png"></div>
+                    <span id="timer"></span>
+                    <div class="my_btn">
+                        <button type="button" id="rock"><img src="img2\rock.png"></button>
+                        <button type="button" id="scissors"><img src="img2\scissors.png"></button>
+                        <button type="button" id="paper"><img src="img2\paper.png"></button>
+                    </div>
                 </div>
             </div>
         </div>
