@@ -1,8 +1,33 @@
 .layer1 { position: absolute; top: -8%; left: 0px; height: 115%; width: 100%; padding: 20px; border-radius: 5%; background: url(../img/ready_screen.png); background-repeat: no-repeat; background-size: 100% 100%;}
-.layer1 #start_btn{ text-decoration: none; margin-top: 90%; margin-left: calc(50% - 125px); width: 250px;}
+.layer1 #start_btn{ text-decoration: none; margin-top: 100%; margin-left: calc(50% - 125px); padding-top: 50%; width: 250px;}
 
 .g1{ position: absolute; top: -3%; left: 0px; height: 103%; width: 100%; padding: 20px; border-radius: 5%; background: url(../img/start_screen.png); background-repeat: no-repeat; background-size: 100% 100%;}
 .g1 #pitcher{ position: absolute; top: 27%; left: calc(50% - 10px);}
 .g1 #ball{ position: absolute; top: 27%; left: 50%; }
 .g1 #hitter{ position: absolute; bottom: 5%; left: calc(50% - 100px);}
 .g1 #hitter2{ position: absolute; bottom: 5%; left: calc(55% - 100px);}
+.g1 #score{ font-family: 'SDSamliphopangche_Outline'; font-size: 35px; color: rgb(255, 255, 255); margin-top: 5%;}
+.g1 #life{ font-size: 35px; color: rgb(255, 0, 0); text-shadow: 3px 3px 3px rgb(255, 141, 141);}
+
+
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMEuljirooraeorae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/BMEuljirooraeorae.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

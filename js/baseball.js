@@ -2,11 +2,18 @@ var pitchershot_val = true;
 var shot_state = true;
 var shot_speed = 1000;
 var life = 3;
+var score = 0;
 
 $(function(){
     $('#start_btn').click(function(){
         $('.layer1').hide();
         $('.g1').show();
+        $('#score').html("SCORE : "+score);
+        life_shape = '';
+        for(var i = 0; i < life; i++){
+            life_shape += "♥"
+        };
+        $('#life').html(life_shape);
         setTimeout(function(){
             ballshot()
         }, Math.floor(Math.random() * 1000) + 500);
@@ -28,16 +35,15 @@ function ballshot(){
     if(life > 0){
         setTimeout(function(){
             if(shot_state == true){
-                reset();
                 life -= 1;
-                console.log(life);
+                reset();
             }
         }, shot_speed + 400)
     }else{
         $("#ball").stop(true, false);
+        $('.g1').hide();
         $(".layer2").show();
     }
-
 }
 
 function pitchershot(){
@@ -52,6 +58,7 @@ function pitchershot(){
         var ballpos=ballpos.replace('px','');
         if(shot_zone_min < ballpos && ballpos < shot_zone_max){
             shot_state = false;
+            score += 1000;
             $("#ball").stop(true,false);
             $("#ball").animate({
                 top : '-100%',
@@ -68,8 +75,10 @@ function pitchershot(){
                 shot_speed = shot_speed - 50;
             }
         }
-        $("#hitter").hide();
-        $("#hitter2").show();
+        if(life > 0){
+            $("#hitter").hide();
+            $("#hitter2").show();
+        }
 
         pitchershot_val = false;
     }
@@ -79,10 +88,16 @@ function reset(){
     $("#ball").css("top", "27%");
     $("#ball").css("left", "50%");
     pitchershot_val = true;
+    life_shape = '';
     shot_state = true;
-
+    
     $("#hitter").show();
     $("#hitter2").hide();
+    $('#score').html("SCORE : "+score);
+    for(var i = 0; i < life; i++){
+        life_shape += "♥";
+    }
+    $('#life').html(life_shape);
 
     setTimeout(function(){
         ballshot();
