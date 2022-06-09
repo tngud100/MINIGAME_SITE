@@ -1,4 +1,5 @@
 var time = 3;
+var enemy_state = 0; // 1:묵 2:찌 3:빠
 
 $(function(){
     $(".game_page").hide();
@@ -21,3 +22,10 @@ $(function(){
         }, 1000);
     });
 });
+
+function play(){
+    let x = Math.floor((Math.random() * 3) + 1);
+    enemy_state = x;
+    
+    var rock = document.getElementById("rock").name;
+}
