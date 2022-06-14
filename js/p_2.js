@@ -46,7 +46,6 @@ function my_btn(player_num){
         }else if(result == 1){
             game_rule2(mt_state);
         }
-
     }
 }
 
@@ -153,7 +152,7 @@ function result_text(text){
 
 function game_rule2(my_state){ // 유저 선공
     var randNum = Math. floor(Math. random() * 3); // 0:묵, 1:가위, 2:보
-    
+
     if(my_state = 0){
         if(enemy == 0){
             state_result = 1;
