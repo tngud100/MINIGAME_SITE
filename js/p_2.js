@@ -4,25 +4,15 @@ var state_result = 0; // 0: 플레이 1: Me_win, 2: AI_win
 
 var btn_check = false; // 버튼 선택 여부
 
-var life = 3;
-var win_count = 0;
-var score = 0;
-
 $(function(){
     $(".game_page").hide();
     $('#start_btn').click(function(){
         $('.game_start').hide();
         $(".game_page").show();
-        $('#state').text("점수(승리횟수): "+ score + "(" + win_count + ")");
-        $('#life').text("목숨 : "+ life);
+
         timer();
 
     });
-    $('.restart_btn').click(function(){
-        $("#game_over").hide(),
-        $(".game_start").show()
-    });
-    $('.score_text').text(score);
 });
 
 function timer(){
@@ -36,9 +26,6 @@ function timer(){
         $('#timer').text(time);
         setTimeout(() => {
             time -= 1;
-            if(time < 0){
-                time = 0;
-            }
             $('#timer').text(time);
             setTimeout(()=>{
                 $('#time_circle').hide();
@@ -54,7 +41,7 @@ function my_btn(player_num){
         btn_check = false;
 
         my_state = player_num;
-        enemy = Math. floor(Math. random() * 3); // 0:묵, 1:가위, 2:보;
+        enemy = Math. floor(Math. random() * 3); // 0:묵, 1:가위, 2:보
 
         if(result == 0){
             game_rule(my_state, enemy);
@@ -69,13 +56,18 @@ function my_btn(player_num){
 
 function Enemy_animation(enemy_state){
     setTimeout(()=>{
-        $('#enemyscissors').show();
-        $('#enemypaper').show();
-        $('#enemyrock').show();
-        $('#enemypaper').css({'width':'100%','margin-left':'0'});
-        $('#enemyscissors').css({'width':'100%','margin-left':'0'});
-        $('#enemyrock').css({'width':'100%','margin-left':'0'});
-        btn_check = true;
+        if(state_result == 1 || state_result == 2){ // 게임이 끝 났을때
+            $(".game_page").hide();
+            $(".game_over").show();
+        }else{
+            $('#enemyscissors').show();
+            $('#enemypaper').show();
+            $('#enemyrock').show();
+            $('#enemypaper').css({'width':'100%','margin-left':'0'});
+            $('#enemyscissors').css({'width':'100%','margin-left':'0'});
+            $('#enemyrock').css({'width':'100%','margin-left':'0'});
+            btn_check = true;
+        }
     },3000)
     
     if(enemy_state == 0){
@@ -126,8 +118,12 @@ function result_text(text){
 //         찌	=>	묵 찌 빠		=>	짐2, 비김0, 이김1
 //         빠	=> 	묵 찌 빠		=>	이김1, 짐2, 비김0
 
+<<<<<<< HEAD
+function game_rule2(my_state){ // 유저 선공
+    var randNum = Math. floor(Math. random() * 3); // 0:묵, 1:가위, 2:보
+
+=======
 function game_rule(my_state, enemy){ // 첫번째 게임
-    console.log("기본 게임");
 
     if(my_state == 0){
         if(enemy == 0){
@@ -135,7 +131,6 @@ function game_rule(my_state, enemy){ // 첫번째 게임
             result_text("Draw!");
         }else if(enemy == 1){
             result = 1;
-            score += 100;
             result_text("You Attack!");
         }else if(enemy == 2){
             result = 2;
@@ -152,7 +147,6 @@ function game_rule(my_state, enemy){ // 첫번째 게임
             result_text("Draw!");
         }else if(enemy == 2){
             result = 1;
-            score += 100;
             result_text("You Attack!");
         }
     }
@@ -160,7 +154,6 @@ function game_rule(my_state, enemy){ // 첫번째 게임
     if(my_state == 2){
         if(enemy == 0){
             result = 1;
-            score += 100;
             result_text("You Attack!");
         }else if(enemy == 1){
             result = 2;
@@ -170,8 +163,6 @@ function game_rule(my_state, enemy){ // 첫번째 게임
             result_text("Draw!");
         }
     }
-    $('#state').text("점수(승리횟수) : "+ score + "(" + win_count + ")");
-    $('#life').text("목숨 : "+ life)
     Enemy_animation(enemy)
 }
 //         이김(game_rule2)
@@ -181,13 +172,10 @@ function game_rule(my_state, enemy){ // 첫번째 게임
 //         빠	=>	묵 찌 빠		=>	비김game_rule2다시(0) , 짐game_rule3(2), 이김(1)
 
 function game_rule2(my_state, enemy){ // 유저 선공
-    console.log("유저 공격");
-
-    if(my_state == 0){
+>>>>>>> d67c178567efb9b7dec7c0e436412a57011a454d
+    if(my_state = 0){
         if(enemy == 0){
             state_result = 1;
-            win_count += 1;
-            score += 1000;
             result_text("User Win!");
         }else if(enemy == 1){
             timer();
@@ -200,15 +188,13 @@ function game_rule2(my_state, enemy){ // 유저 선공
         }
     }
     
-    if(my_state == 1){
+    if(my_state = 1){
         if(enemy == 0){
             timer();
             result = 2;
             result_text('AI Attack!');
         }else if(enemy == 1){
             state_result = 1;
-            win_count += 1;
-            score += 1000;
             result_text("User Win!");
         }else if(enemy == 2){
             timer();
@@ -217,7 +203,7 @@ function game_rule2(my_state, enemy){ // 유저 선공
         }
     }
     
-    if(my_state == 2){
+    if(my_state = 2){
         if(enemy == 0){
             timer();
             result = 1;
@@ -228,28 +214,9 @@ function game_rule2(my_state, enemy){ // 유저 선공
             result_text('AI Attack!');
         }else if(enemy == 2){
             state_result = 1;
-            win_count += 1;
-            score += 1000;
             result_text("User Win!");
         }
     }
-    if(state_result == 1 || state_result == 2){ // 게임이 끝 났을때
-        if(life == 0){  
-            setTimeout(() => {
-                $(".game_page").hide();
-                $("#game_over").show();
-               
-            }, 2000)
-        }
-    }else{
-        time = 3; 
-        result = 0;            
-        state_result = 0; 
-        btn_check = false;
-    }
-    $('#state').text("점수(승리횟수) : "+ score + "(" + win_count + ")");
-    $('#life').text("목숨 : "+ life)
-    $('.score_text').text(score);
     Enemy_animation(enemy)
 }
 
@@ -259,75 +226,51 @@ function game_rule2(my_state, enemy){ // 유저 선공
 //         찌	=>	묵 찌 빠		=>	비김 game_rule3 다시(0), 짐(2), 이김 game_rule2 다시(1)
 //         빠	=>	묵 찌 빠		=>	이김 game_rule2 다시(1), 비김 game_rule3 다시(0), 짐(2)
 function game_rule3(my_state, enemy){ // AI 선공
-    console.log("AI 공격");
-    if(my_state == 0){
+    if(my_state = 0){
         if(enemy == 0){
+            timer()
             state_result = 2;
-            life -= 1;
             result_text("AI Win!");
         }else if(enemy == 1){
             timer();
             result = 1;
-            score += 100;
             result_text("You Attack!");
         }else if(enemy == 2){
             timer();
             result = 2;
-            result_text("AI Attack!");
+            result_text("Draw");
         }
     }
     
-    if(my_state == 1){
+    if(my_state = 1){
         if(enemy == 0){
             timer();
             result = 2;
-            result_text("AI Attack!!");
+            result_text("Draw!");
         }else if(enemy == 1){
             state_result = 2;
-            life -= 1;
             result_text("AI Win!");
         }else if(enemy == 2){
             timer();
             result = 1;
-            score += 100;
             result_text("You Attack!");
         }
     }
     
-    if(my_state == 2){
+    if(my_state = 2){
         if(enemy == 0){
             timer();
             result = 1; 
-            score += 100;
             result_text("You Attack!");
         }else if(enemy == 1){
             timer();
             result = 2;
-            result_text('AI Attack!');
+            result_text('Draw!');
         }else if(enemy == 2){
             state_result = 2;
-            life -= 1;
             result_text("AI Win!");
         }
-    
     }
-    if(state_result == 1 || state_result == 2){ // 게임이 끝 났을때
-        if(life == 0){
-            setTimeout(() => {
-                $(".game_page").hide();
-                $("#game_over").show();
-            }, 2000);
-        }else{
-            time = 3; 
-            result = 0;            
-            state_result = 0; 
-            btn_check = false;
-            timer()
-        }
-    }
-    $('#state').text("점수(승리횟수) : "+ score + "(" + win_count + ")");
-    $('#life').text("목숨 : "+ life)
-    $('.score_text').text(score);
     Enemy_animation(enemy)
 }
 

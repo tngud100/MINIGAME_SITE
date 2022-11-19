@@ -6,12 +6,9 @@ var score = 0;
 
 $(function(){
     $('#start_btn').click(function(){
-		life = 3;
-		score = 0;
-		shot_speed = 1000;
         $('.layer1').hide();
         $('.g1').show();
-        $('.score_text').html(0);
+        $('#score').html("SCORE : "+score);
         life_shape = '';
         for(var i = 0; i < life; i++){
             life_shape += "♥"
@@ -28,16 +25,7 @@ $(function(){
                 }
             });
         }
-
-		$('.save_btn').show();
     });
-
-	$('.restart_btn').click(function(){
-		$('#game_ready').show();
-
-		$('.save_btn').show();
-        
-    })  
 })
 
 function ballshot(){
@@ -54,7 +42,7 @@ function ballshot(){
     }else{
         $("#ball").stop(true, false);
         $('.g1').hide();
-        $("#game_over").show();
+        $(".layer2").show();
     }
 }
 
@@ -105,7 +93,7 @@ function reset(){
     
     $("#hitter").show();
     $("#hitter2").hide();
-    $('.score_text').html(score);
+    $('#score').html("SCORE : "+score);
     for(var i = 0; i < life; i++){
         life_shape += "♥";
     }
