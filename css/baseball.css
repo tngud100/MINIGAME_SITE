@@ -6,7 +6,7 @@
 .g1 #ball{ position: absolute; top: 27%; left: 50%; }
 .g1 #hitter{ position: absolute; bottom: 5%; left: calc(50% - 100px);}
 .g1 #hitter2{ position: absolute; bottom: 5%; left: calc(55% - 100px);}
-.g1 #score{ font-family: 'SDSamliphopangche_Outline'; font-size: 35px; color: rgb(255, 255, 255); margin-top: 5%;}
+.g1 .score_box{ font-family: 'SDSamliphopangche_Outline'; font-size: 35px; color: rgb(255, 255, 255); margin-top: 5%;}
 .g1 #life{ font-size: 35px; color: rgb(255, 0, 0); text-shadow: 3px 3px 3px rgb(255, 141, 141);}
 
 
