@@ -1,0 +1,298 @@
+body{font-size:16px;}
+h1 {font-size:1.3em}
+
+header{align-items: center; background-color:#fff; color:#333;}
+nav ul {height:100%}
+nav ul li {margin-left:10px;}
+
+.box_style1 {max-width:1100px; margin:0 auto; }
+
+#main_section {min-height:calc(100vh - 160px); background-color:#B2D9DE; color:#fff}
+
+footer{background-color:#595959; color:#fff;}
+footer .box_style1 {height:80px;}
+
+.game_c_list {width: 100vw; max-width: 1100px;}
+.game_c_list ul {display:flex; flex-wrap: wrap; width:276px; justify-content: space-between;}
+.game_c_list li {margin-bottom:20px; text-align:center}
+.game_c_list li div.img_box{width:113px; height:153px; background-color:#fff; margin-bottom:10px; border-radius:50px;}
+
+.game_t_div1 {}
+.game_t_div1 p:nth-child(1) {font-size:1.4em; margin-bottom:10px; font-weight: 700; color:#F7A7CD;}
+.game_t_div1 p:nth-child(2) {font-size:3em; margin-bottom:10px; font-weight: 700;}
+.game_t_div1 button {background:none; border:0; padding:0;}
+
+.play_area {position: relative; border:5px solid #333; min-height:calc(100vh - 260px); width:100vw; max-width:417px; padding:15px; background-color:#fff; border-radius:30px; color:#333;}
+.pop_gr {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:#000; opacity:.4; z-index:49;}
+
+
+@media (min-width:768px){
+  header .box_style1 {height:80px}
+  .pc_h {display:none !important;}
+}
+
+@media (max-width:1330px){
+	.box_style1 {padding-left:30px; padding-right:30px;}
+}
+
+@media (max-width:768px){
+  .md_h {display:none !important;}
+  
+  .head_araa .box_style1 {display: block; position:absolute; top:0; right:-300px; width:300px; height:100%; background:#333; color:#ffff; z-index:50;} 
+  .head_araa .box_style1 h1 {padding:40px 0; border-bottom:1px solid #fff;}
+  .head_araa nav ul{display:block; padding:30px 0;}
+  .head_araa nav li {padding:10px 0;}
+  .head_araa .md_footer {position:absolute; bottom:0; right:0; padding:30px; border-top:1px solid #fff;}
+  
+  .md_pop_show {position:fixed; top:20px; right:20px; z-index:2; border:0; background:0; padding:0;}
+  .md_pop_close {position:absolute; top:30px; right:30px; background:0; border:0; color:#fff; padding:0;}
+
+  .play_area {position:fixed; top:0; left:0; width:100vw; height:100vh; max-width:100vw; border:0; border-radius:0;}
+}
+
+
+.layer1
+{
+    position : absolute;
+    top : 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+#game_start h2
+{
+    font-size: 85px;
+    padding-top: 15px;
+}
+#game_start .start_btn
+{
+    margin-top: 90px;
+    margin-left: 40px;
+    border-radius: 15px;
+    background-color: skyblue;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#game_t1 .game_view
+{
+    width: 100%;
+    height: calc(100% - 80px);
+    position: relative;
+    overflow : hidden;
+
+}
+#game_t1 .game_view li
+{
+    width: 100px;
+    height: 140px;
+    position: absolute;
+    left: calc(100% / 2 - 50px);
+    background-position: 48% 47%;
+    
+}
+#game_t1 .game_view li.type1 
+{
+    background-image: url(../img/모코코.png); 
+    background-size: 690%;
+}
+#game_t1 .game_view li.type2 
+{
+    background-image: url(../img/주황버섯.png); 
+    background-size: 590%;
+}
+#game_t1 .game_view li.type3 
+{
+    background-image: url(../img/oioi2.png); 
+    background-size: 180%;
+}
+#game_t1 .game_view li:nth-child(1)
+{
+    bottom: 50px;
+    z-index: 13;
+}
+#game_t1 .game_view li:nth-child(2)
+{
+    bottom: 100px;
+    z-index: 12;
+}
+#game_t1 .game_view li:nth-child(3)
+{
+    bottom: 150px;
+    z-index: 11;
+}
+#game_t1 .game_view li:nth-child(4)
+{
+    bottom: 200px;
+    z-index: 10;
+}
+#game_t1 .game_view li:nth-child(5)
+{
+    bottom: 250px;
+    z-index: 9;
+}
+#game_t1 .game_view li:nth-child(6)
+{
+    bottom: 300px;
+    z-index: 8;
+}
+#game_t1 .game_view li:nth-child(7)
+{
+    bottom: 350px;
+    z-index: 7;
+}
+#game_t1 .game_view li:nth-child(8)
+{
+    bottom: 400px;
+    z-index: 6;
+}
+#game_t1 .game_view li:nth-child(9)
+{
+    bottom: 450px;
+    z-index: 5;
+}
+#game_t1 .game_view li:nth-child(10)
+{
+    bottom: 500px;
+    z-index: 4;
+}
+#game_t1 .game_view li:nth-child(11)
+{
+    bottom: 550px;
+    z-index: 3;
+}
+#game_t1 .game_view li:nth-child(12)
+{
+    bottom: 600px;
+    z-index: 2;
+}
+#game_t1 .game_ctr
+{
+    width: 100%;
+    height: 80px;
+}
+#game_t1 .game_ctr button
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    padding: 0;
+}
+#game_t1 .game_ctr button:hover
+{
+    background-color: skyblue;
+    text-decoration: none;
+}
+#game_t1 #game_play .score_text
+{
+    position: absolute;
+    top: 50px;
+    left: 10ox;
+    font-size: 24px;
+}
+.game_life
+{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+
+}
+.game_life div
+{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: red;
+    margin-right: 10px;
+}
+.game_life div.active
+{
+    background-color: green;
+} 
+#game_over
+{
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 30;
+    border-radius: 15px;
+}
+#game_over .popup_area
+{
+    width: 300%;
+    background-color: #fff;
+    color: #000;
+    padding: 30px 0;
+    border-radius: 10px;
+
+}
+#game_over .popup_area .restart_btn
+{
+    padding: 10px 15px;
+    background-color: brown;
+    color: #fff;
+
+}
+#p01_btn
+{
+    border : 1px solid black;
+
+}
+#game_play
+{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/p1_background_img.png);
+    background-repeat : no-repeat;
+    background-size: 100% 101%;
+}
+#game_start
+{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/p1_background_img.png);
+    background-repeat : no-repeat;
+    background-size: 100% 101%;
+
+}
+#st_01
+{
+    font-family: 'Dongle', sans-serif;
+
+}
+
+#main_img1
+{
+    width: calc(100% / 3);
+    height: 130px;
+    background-size: 500%;
+    background-position: center;
+    background-image: url(../img/모코코.png);
+}
+
+#main_img2
+{    
+    width: calc(100% / 3);
+    height: 130px;
+    background-size: 500%;
+    background-position: center;
+    background-image: url(../img/주황버섯.png); 
+}
+
+#main_img3
+{
+    width: calc(100% / 3);
+    height: 130px;
+    background-size: 150%;
+    background-position: center;
+    background-image: url(../img/oioi2.png); 
+
+}
+.time_text  
+{
+    transform: translate(69%, 35%);
+
+}
+
+
+
